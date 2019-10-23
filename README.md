@@ -1,17 +1,4 @@
 # Socket-Server
 
-Reconstruir modulos de Node
-```
-npm install
-```
-
-Generar el DIST
-```
-tsc -w
-```
-
-Levantar el servidor
-```
-nodemon dist/
-```
+Primeros pasos para crear una aplicacion haciendo uso de socket con typescript y express sobre node
 
