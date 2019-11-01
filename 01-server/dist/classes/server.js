@@ -29,13 +29,14 @@ class Server {
     escucharSockets() {
         console.log('escuchando conexiones - sockets');
         this.io.on('connection', cliente => {
-            console.log('Cliente conectado');
+            //agregar usuario
+            socket.agregarUsuario(cliente);
+            //Configurar Usuario
+            socket.configuraUsuario(cliente, this.io);
             //Mensajes
             socket.mensaje(cliente, this.io);
             //Desconectar
             socket.desconectar(cliente);
-            //Configurar Usuario
-            socket.configuraUsuario(cliente, this.io);
         });
     }
     start(callback) {
