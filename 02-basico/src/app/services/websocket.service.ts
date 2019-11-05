@@ -42,12 +42,29 @@ export class WebsocketService {
 
     loginWS(nombre: string){
 
-      console.log('configurando',nombre);
-
-      this.emit('configurar-usuario', { nombre }, resp=>{
-        console.log(resp);
+      return new Promise((resolve, reject)=>{
+        this.emit('configurar-usuario', { nombre }, resp=>{
+          this.usuario = new Usuario(nombre);
+          this.guardarStorage();
+          resolve();
+        });
       });
+    }
+
+    getusuario(){
+      return this.usuario;
+    }
+
+    guardarStorage(){
+      localStorage.setItem('usuario', JSON.stringify(this.usuario));
+    }
+
+    cargarStorage(){
+      if(localStorage.getItem('usuario')){
+        this.usuario = JSON.parse( localStorage.getItem('usuario') );
+      }
       
     }
+
 
 }
